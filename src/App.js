@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import MovieHeader from './components/movieheader';
+import MovieList from './components/movielist';
 import Authentication from './components/authentication';
 import { HashRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import store from './stores/store';
 
 function App() {
   return (
@@ -13,10 +14,10 @@ function App() {
         <HashRouter>
           <div>
             <MovieHeader />
-            <Route exact path="/" render={() => <p />} />
-            <Route exact path="/movielist" render={() => <p />} />
-            <Route exact path="/movie/:movieId" render={() => <p />} />
-            <Route path="/signin" render={() => <Authentication />} />
+            <Route exact path="/" render={() =><MovieList />}/>
+            <Route exact path="/movielist" render={() =><MovieList/>}/>
+            <Route exact path="/movie/:movieId" render={() =><p />}/>
+            <Route path="/signin" render={() => <Authentication />}/>
           </div>
         </HashRouter>
       </Provider>

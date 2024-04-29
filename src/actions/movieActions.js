@@ -1,7 +1,7 @@
 import actionTypes from '../constants/actionTypes';
 import runtimeEnv from '@mars/heroku-js-runtime-env';
 
-function userLoggedIn(username) {
+function moviesFetched(movies) {
   return {
     type: actionTypes.FETCH_MOVIES,
     movies: movies
@@ -12,20 +12,20 @@ function movieFetched(movie) {
     return {
       type: actionTypes.FETCH_MOVIE,
       selectedMovie: movie
-    };
+    }
   }
   
   function movieSet(movie) {
     return {
       type: actionTypes.SET_MOVIE,
       selectedMovie: movie
-    };
+    }
   }
   
   export function setMovie(movie) {
     return dispatch => {
       dispatch(movieSet(movie));
-    };
+    }
   }
 
   export function fetchMovie(movieId) {
