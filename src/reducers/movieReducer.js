@@ -1,24 +1,27 @@
-import constants from '../constants/actionTypes';
+import constants from '../constants/actionTypes'
 
 let initialState = {
-    loggedIn: localStorage.getItem('token') ? true : false,
-    username: localStorage.getItem('username') ? localStorage.getItem('username') : ''
+      movies: [],
+      selectedMovie: null
 }
 
-export default (state = initialState, action) => {
-    let updated = Object.assign({}, state);
-    
-    switch(action.type) {
-        case constants.USER_LOGGEDIN:
-        updated['loggedIn'] = true;
-        updated['username'] = action.username;
-        return updated;
-            
-        case constants.USER_LOGOUT:
-        updated['loggedIn'] = false;
-        updated['username'] = '';
-        return updated;
-        default:
-        return state;
-    }
+const movieReducer = (state = initialState, action) => {
+      let updated = Object.assign({}, state);
+
+      switch(action.type) {
+            case constants.FETCH_MOVIES:
+                  updated['movies'] = action.movies;
+                  updated['selectedMovie'] = action.movies[0];
+                  return updated;
+            case constants.SET_MOVIE:
+                  updated['selectedMovie'] = action.selectedMovie;
+                  return updated;
+            case constants.FETCH_MOVIE:
+                  updated['selectedMovie'] = action.selectedMovie;
+                  return updated;
+            default:
+                  return state;
+      }
 }
+
+export default movieReducer;
